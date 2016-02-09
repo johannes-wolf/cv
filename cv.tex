@@ -1,0 +1,60 @@
+\setuplayout[
+	backspace=.22\paperwidth,
+	leftmargin=.15\paperwidth,
+	rightmargin=0mm,
+	width=.68\paperwidth,
+	topspace=.05\paperheight,
+	header=1.5cm,
+	footer=0cm
+]
+
+\setupalign[hanging]
+\setuptolerance[horizontal, stretch]
+\setuppagenumbering[
+	alternative=singlesided,
+	location={footer},
+	state=stop
+]
+
+\indenting[no]
+\setupmargindata[style=normal]
+\setupinterlinespace[line=1.25em]
+\setupitemize[1][intro,margin]
+\setupindenting[medium]
+\setupbodyfont[serif, 11pt]
+\setuphead[title][style={\switchtobodyfont[16pt]\ss\bf}]
+\setuphead[subject][style=\tfa\bf\ss]
+
+\def\portraitwidth{3cm}
+\definelayer[portrait][
+	location={right,bottom},
+	x=\textwidth,
+	y=0cm,
+	hoffset=-\portraitwidth,
+]
+
+\setupbackgrounds[text][background=portrait]
+
+%%%
+
+\def\cvsubject#1%
+        {\subject{#1}}
+
+\def\cventry#1#2#3%
+        {\margintext{#1} {\em #2} \ifx&#3&\else \startitemize[5][] #3 \stopitemize \fi}
+
+\def\cvitem#1%
+        {\item #1}
+
+\def\cvproject#1#2%
+        {\item {#1} -- #2}
+
+\def\cvskill#1#2%
+        {#1 #2 \par}
+
+\def\cvperson#1#2%
+        {\margintext{#1} #2 \par}
+
+\def\placehead#1%
+        {\title{#1}}
+
